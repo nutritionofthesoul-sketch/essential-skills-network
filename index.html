@@ -3,386 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Essential Skills Network — Learn. Manifest. Execute.</title>
-  <meta name="description" content="Essential Skills Network is an AI-powered learning platform that helps you learn faster, build momentum, and execute in the real world." />
-  <meta name="theme-color" content="#0b1020" />
+  <title>Essential Skills Network</title>
+
+  <meta name="description" content="Essential Skills Network is an AI-powered learning platform currently in development." />
 
   <style>
-    :root{
-      --bg:#070a14;
-      --panel:#0c1226;
-      --panel2:#0b1020;
-      --text:#eaf0ff;
-      --muted:#b7c3e6;
-      --line:rgba(255,255,255,.10);
-      --a:#7c5cff;
-      --b:#22d3ee;
-      --c:#34d399;
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --radius: 18px;
+    :root {
+      --bg: #0b0f1a;
+      --text: #f5f7ff;
+      --muted: #9aa3c7;
+      --border: rgba(255,255,255,0.12);
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(124,92,255,.35), transparent 60%),
-        radial-gradient(1000px 600px at 90% 0%, rgba(34,211,238,.25), transparent 55%),
-        radial-gradient(900px 500px at 60% 110%, rgba(52,211,153,.20), transparent 55%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.45;
+    * {
+      box-sizing: border-box;
     }
 
-    a{color:inherit}
-    .wrap{max-width:1100px; margin:0 auto; padding:24px}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 0;
-    }
-    .brand{display:flex; gap:12px; align-items:center; text-decoration:none}
-    .logo{
-      width:38px; height:38px; border-radius:12px;
-      background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 10px 30px rgba(124,92,255,.35);
-      position:relative;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset:9px;
-      border-radius:10px;
-      background: linear-gradient(135deg, rgba(255,255,255,.28), rgba(255,255,255,0));
-    }
-    .brand strong{display:block; font-size:14px; letter-spacing:.4px}
-    .brand span{display:block; font-size:12px; color:var(--muted)}
-    .links{display:flex; gap:16px; align-items:center}
-    .links a{
-      text-decoration:none; color:var(--muted); font-size:13px;
-      padding:8px 10px; border-radius:10px;
-    }
-    .links a:hover{background:rgba(255,255,255,.06); color:var(--text)}
-    .cta{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 14px; border-radius:12px;
-      background: linear-gradient(135deg, var(--a), var(--b));
-      text-decoration:none; font-weight:650; font-size:13px;
-      box-shadow: 0 14px 40px rgba(34,211,238,.12);
-      border:1px solid rgba(255,255,255,.12);
-    }
-    .cta:hover{filter:brightness(1.06)}
-    .cta.secondary{
-      background: rgba(255,255,255,.06);
-      box-shadow:none;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      text-align: center;
     }
 
-    .hero{
-      padding:54px 0 28px;
-      display:grid;
-      grid-template-columns: 1.25fr .9fr;
-      gap:26px;
-      align-items:stretch;
-    }
-    .badge{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:7px 11px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      color:var(--muted);
-      font-size:12px;
-    }
-    .badge i{
-      width:8px; height:8px; border-radius:50%;
-      background: var(--c);
-      box-shadow:0 0 0 4px rgba(52,211,153,.16);
-      display:inline-block;
-    }
-    h1{
-      font-size:44px;
-      line-height:1.06;
-      margin:14px 0 12px;
-      letter-spacing:-.8px;
-    }
-    .sub{
-      color:var(--muted);
-      font-size:16px;
-      max-width:60ch;
-      margin:0 0 18px;
-    }
-    .slogan{
-      margin-top:10px;
-      font-weight:700;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      font-size:12px;
-      color:rgba(234,240,255,.85);
-    }
-    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-
-    .panel{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .heroCard{
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height: 320px;
-      overflow:hidden;
-      position:relative;
-    }
-    .heroCard:before{
-      content:"";
-      position:absolute;
-      width:520px; height:520px;
-      right:-260px; top:-260px;
-      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.35), transparent 55%),
-                  radial-gradient(circle at 70% 60%, rgba(34,211,238,.22), transparent 55%);
-      filter: blur(1px);
-      pointer-events:none;
-    }
-    .statRow{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px}
-    .stat{
-      padding:12px; border-radius:14px;
-      background: rgba(7,10,20,.55);
-      border:1px solid rgba(255,255,255,.10);
-      position:relative;
-      z-index:1;
-    }
-    .stat b{display:block; font-size:14px}
-    .stat small{display:block; color:var(--muted); margin-top:4px}
-
-    section{padding:22px 0}
-    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .card{padding:16px}
-    .card h3{margin:6px 0 8px; font-size:16px}
-    .card p{margin:0; color:var(--muted); font-size:13px}
-    .kicker{
-      color:rgba(234,240,255,.85);
-      letter-spacing:.5px;
-      text-transform:uppercase;
-      font-size:12px;
-      margin:0 0 10px;
-    }
-    .secTitle{margin:0 0 10px; font-size:26px; letter-spacing:-.4px}
-    .secDesc{margin:0 0 16px; color:var(--muted); max-width:75ch}
-
-    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .stepNum{
-      width:34px; height:34px; border-radius:12px;
-      display:inline-flex; align-items:center; justify-content:center;
-      background: rgba(124,92,255,.18);
-      border:1px solid rgba(124,92,255,.35);
-      font-weight:750;
-      margin-bottom:8px;
+    .container {
+      max-width: 420px;
+      padding: 32px 24px;
     }
 
-    .signup{
-      padding:18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
+    h1 {
+      font-size: 26px;
+      margin: 0 0 6px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
     }
-    .signup form{display:flex; gap:10px; flex-wrap:wrap}
-    input[type="email"]{
-      width:min(360px, 74vw);
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(7,10,20,.55);
-      color:var(--text);
-      outline:none;
-    }
-    input::placeholder{color:rgba(183,195,230,.75)}
-    .fineprint{color:var(--muted); font-size:12px}
-    footer{padding:18px 0 26px; color:var(--muted); font-size:12px}
-    footer .footrow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    footer a{color:var(--muted); text-decoration:none}
-    footer a:hover{color:var(--text)}
 
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; padding-top:34px}
-      h1{font-size:36px}
-      .grid3, .steps{grid-template-columns:1fr}
-      .links{display:none}
+    .slogan {
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .qr-box {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 16px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .qr-box img {
+      width: 220px;
+      height: 220px;
+      display: block;
+    }
+
+    .status {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--muted);
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="nav">
-      <a class="brand" href="#top" aria-label="Essential Skills Network home">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <strong>Essential Skills Network</strong>
-          <span>AI-powered learning for real execution</span>
-        </div>
-      </a>
+  <main class="container">
+    <h1>Essential Skills Network</h1>
+    <div class="slogan">Learn. Manifest. Execute.</div>
 
-      <nav class="links" aria-label="Primary navigation">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#about">About</a>
-      </nav>
+    <!-- Replace qr-code.png with your actual file name -->
+    <div class="qr-box">
+      <img src="qr-code.png" alt="QR code for Essential Skills Network" />
+    </div>
 
-      <a class="cta" href="#waitlist">Join the waitlist</a>
-    </header>
-
-    <main id="top">
-      <section class="hero">
-        <div>
-          <div class="badge"><i></i> New app in development • Early access opening soon</div>
-          <h1>Learn faster, build momentum, and execute in the real world.</h1>
-          <p class="sub">
-            Essential Skills Network is an AI-powered learning experience that turns knowledge into action:
-            clear plans, bite-sized practice, and accountability loops that help you ship outcomes—not just consume content.
-          </p>
-          <div class="slogan">Learn. Manifest. Execute.</div>
-
-          <div class="actions">
-            <a class="cta" href="#waitlist">Get early access</a>
-            <a class="cta secondary" href="#how">See how it works</a>
-          </div>
-
-          <p class="fineprint" style="margin-top:14px;">
-            Zero-pressure sign-up. You’ll only hear from us about launch and early access.
-          </p>
-        </div>
-
-        <aside class="panel heroCard" aria-label="Product snapshot">
-          <div style="position:relative; z-index:1;">
-            <div class="kicker">What you get</div>
-            <div class="statRow">
-              <div class="stat">
-                <b>Personalized Path</b>
-                <small>AI maps skills → next best lesson → practice.</small>
-              </div>
-              <div class="stat">
-                <b>Execution Engine</b>
-                <small>Plans, prompts, and weekly reviews to stay on track.</small>
-              </div>
-              <div class="stat">
-                <b>Micro-Lessons</b>
-                <small>Short learning bursts designed for retention.</small>
-              </div>
-              <div class="stat">
-                <b>Proof of Progress</b>
-                <small>Milestones, streaks, and outcome tracking.</small>
-              </div>
-            </div>
-          </div>
-
-          <div style="position:relative; z-index:1; margin-top:14px;">
-            <div class="kicker">Ideal for</div>
-            <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <span class="badge" style="border-radius:14px;"><i style="background:var(--a); box-shadow:none;"></i> Learners</span>
-              <span class="badge" style="border-radius:14px;"><i style="background:var(--b); box-shadow:none;"></i> Creators</span>
-              <span class="badge" style="border-radius:14px;"><i style="background:var(--c); box-shadow:none;"></i> Operators</span>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section id="features">
-        <p class="kicker">Features</p>
-        <h2 class="secTitle">Everything required to move from insight to action</h2>
-        <p class="secDesc">
-          The platform is designed around behavior change: learn the concept, apply it immediately, then review and iterate.
-        </p>
-
-        <div class="grid3">
-          <div class="panel card">
-            <h3>AI-guided learning paths</h3>
-            <p>Adaptive sequencing that prioritizes what will create the most leverage next.</p>
-          </div>
-          <div class="panel card">
-            <h3>Practice-first design</h3>
-            <p>Micro-exercises, prompts, and real-world tasks that convert theory into capability.</p>
-          </div>
-          <div class="panel card">
-            <h3>Accountability loops</h3>
-            <p>Plans, reminders, and reflection cycles that keep you moving—without burnout.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="how">
-        <p class="kicker">How it works</p>
-        <h2 class="secTitle">A simple system you’ll actually follow</h2>
-        <p class="secDesc">Three steps, repeated weekly, to compound progress.</p>
-
-        <div class="steps">
-          <div class="panel card">
-            <div class="stepNum">1</div>
-            <h3>Assess</h3>
-            <p>Define your goal, current level, and constraints. The AI identifies the shortest path.</p>
-          </div>
-          <div class="panel card">
-            <div class="stepNum">2</div>
-            <h3>Manifest</h3>
-            <p>Turn intent into a plan: weekly outcomes, daily actions, and the right difficulty curve.</p>
-          </div>
-          <div class="panel card">
-            <div class="stepNum">3</div>
-            <h3>Execute</h3>
-            <p>Complete short learning + practice loops, track outcomes, and iterate with weekly reviews.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about">
-        <p class="kicker">About</p>
-        <h2 class="secTitle">Built for practical skill-building</h2>
-        <p class="secDesc">
-          Essential Skills Network focuses on execution-grade learning—where progress is measured by what you can do,
-          not what you watched or read.
-        </p>
-      </section>
-
-      <section id="waitlist">
-        <div class="panel signup">
-          <div>
-            <h2 class="secTitle" style="margin-bottom:6px;">Join the early access list</h2>
-            <p class="secDesc" style="margin:0;">
-              Be notified when Essential Skills Network launches. Early members get priority onboarding.
-            </p>
-          </div>
-
-          <!-- Option A: mailto (no backend needed). Replace YOUR_EMAIL. -->
-          <form action="mailto:YOUR_EMAIL?subject=Early%20Access%20-%20Essential%20Skills%20Network" method="post" enctype="text/plain">
-            <input type="email" name="email" placeholder="you@company.com" required aria-label="Email address" />
-            <button class="cta" type="submit">Request access</button>
-          </form>
-
-          <p class="fineprint" style="margin:0;">
-            Privacy-first. No spam. Unsubscribe anytime.
-          </p>
-        </div>
-      </section>
-    </main>
+    <p class="status">
+      Our AI-powered learning platform is currently in development.<br />
+      Scan the QR code to stay connected.
+    </p>
 
     <footer>
-      <div class="footrow">
-        <div>© <span id="y"></span> Essential Skills Network. All rights reserved.</div>
-        <div style="display:flex; gap:14px; flex-wrap:wrap;">
-          <a href="#top">Back to top</a>
-          <!-- Add real links when ready -->
-          <a href="#" aria-disabled="true" onclick="return false;">Privacy</a>
-          <a href="#" aria-disabled="true" onclick="return false;">Contact</a>
-        </div>
-      </div>
+      © <span id="year"></span> Essential Skills Network
     </footer>
-  </div>
+  </main>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
